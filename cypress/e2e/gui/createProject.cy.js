@@ -1,8 +1,9 @@
 import { faker } from '@faker-js/faker'
-
-describe('Criar projeto', () => {
+const options = { env: { snapshotOnly: true } }
+describe('Create Project', options, () => {
 // condição antes do teste, aqui, por exemplo estar logado
     beforeEach(()=>{
+        cy.api_deleteProjects()
         cy.login()
     })
 
@@ -10,7 +11,7 @@ describe('Criar projeto', () => {
         const project = {
             name: `project-${faker.datatype.uuid()}`,
             description: faker.random.words(5)        }
-      cy.criar_projeto(project)
+        cy.api_createProject(project)
 
         // validação se o projeto foi criado
         cy.contains(project.name).should('be.visible') // valida se o nome do projeto aparece na tela

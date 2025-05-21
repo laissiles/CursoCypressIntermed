@@ -1,2 +1,5 @@
-import './gui_commands'
 import 'cypress-xpath'
+import './api_commands'
+import './gui_commands'
+import 'cypress-plugin-api'
+
